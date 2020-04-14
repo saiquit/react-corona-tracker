@@ -1,0 +1,61 @@
+.active {
+  display: block;
+  transition: 2s ease-in-out;
+}
+.search_box {
+  margin: 20px auto;
+}
+
+/* spinner */
+.spinner {
+  position: absolute;
+  top: 50%;
+  right: 45%;
+}
+.spinner div {
+  width: 3rem;
+  height: 3rem;
+}
+.search {
+  width: 70vw;
+  margin: 20px auto;
+}
+.card-container {
+  height: 280px;
+  width: 90vw !important;
+  margin: 5px;
+}
+
+/* world */
+.globe {
+  border: 2px solid #ff0000;
+  border-radius: 50%;
+  height: 70px;
+  left: 50%;
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+}
+.globe svg {
+  animation: rotation 12s linear 0s infinite;
+}
+.globe svg path {
+  stroke: #ec4646;
+}
+@keyframes rotation {
+  from {
+    transform: translateX(0);
+  }
+  from {
+    transform: translateX(-50%);
+  }
+}
+.bg {
+  background-color: #5458d3;
+  height: 59vw;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+}
