@@ -1,5 +1,6 @@
 import React from "react";
 import WorldAnimation from "./WorldAnimation";
+import { Link } from "react-router-dom";
 
 const HeroCard = ({
   global: {
@@ -42,6 +43,14 @@ const HeroCard = ({
               </li>
             </ul>
           </div>
+        </div>
+        <div className="links d-flex justify-content-end ">
+          <Link to="/" className="text-light p-3">
+            Sort By Name
+          </Link>
+          <Link to="/sorted" className="text-light p-3">
+            Sort By Death
+          </Link>
         </div>
       </div>
     </div>

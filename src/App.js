@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
-import CountryList from "./components/CountryList";
 import Input from "./components/Input";
 import "./App.css";
+import HomePage from "./components/pages/HomePage";
 import HeroCard from "./components/HeroCard";
+import Sorted from "./components/pages/Sorted";
+
+import { Route, Switch, Link } from "react-router-dom";
 
 function App() {
   const [global, setGlobal] = useState({});
@@ -15,18 +18,13 @@ function App() {
       .then((data) => {
         setGlobal(data.Global);
         setCountries(data.Countries);
-        console.log(data.Global);
       });
     return () => {};
-  }, []);
+  }, [countries]);
   const handleChange = (e) => {
     const value = e.target.value;
     setQuery(value);
   };
-
-  const filtered = countries.filter((countries) =>
-    countries.Country.toLowerCase().includes(query.toLowerCase()),
-  );
 
   return (
     <div className="App">
@@ -37,17 +35,18 @@ function App() {
         handleChange={handleChange}
       />
       <HeroCard global={global} />
-      {countries.length ? (
-        filtered.map(({ Slug, ...otherProps }) => (
-          <CountryList key={Slug} {...otherProps} />
-        ))
-      ) : (
-        <div className="d-flex justify-content-center spinner ">
-          <div className="spinner-border" role="status">
-            <span className="sr-only">Loading...</span>
-          </div>
-        </div>
-      )}
+
+      <Switch>
+        <Route
+          exact
+          path="/"
+          render={() => <HomePage countries={countries} query={query} />}
+        />
+        <Route
+          path="/sorted"
+          render={() => <Sorted countries={countries} query={query} />}
+        />
+      </Switch>
     </div>
   );
 }
